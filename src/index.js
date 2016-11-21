@@ -1,5 +1,5 @@
-import HTMLDOMPropertyConfig from 'react/lib/HTMLDOMPropertyConfig'
-import SVGDOMPropertyConfig from 'react/lib/SVGDOMPropertyConfig'
+import HTMLDOMPropertyConfig from 'react-dom/lib/HTMLDOMPropertyConfig'
+import SVGDOMPropertyConfig from 'react-dom/lib/SVGDOMPropertyConfig'
 import {dirname, resolve} from 'path'
 import {readFileSync} from 'fs'
 import parse from 'xml-parser'
@@ -39,7 +39,9 @@ export default ({types: t}) => ({
 
           if (node.name === 'svg') {
             attributes.push(
-              svgAttribute('className', id.replace( /([a-z])([A-Z])/g, '$1-$2' ).toLowerCase())
+              t.jSXSpreadAttribute(
+                t.identifier('props')
+              )
             )
           }
 
